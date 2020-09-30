@@ -18,9 +18,7 @@
 package io.shardingsphere.core.routing.strategy;
 
 /**
- * 分片算法根接口
- * <p>
- * Sharding algorithm interface.
+ * Sharding algorithm interface. 分片算法接口
  *
  * @author zhangliang
  */

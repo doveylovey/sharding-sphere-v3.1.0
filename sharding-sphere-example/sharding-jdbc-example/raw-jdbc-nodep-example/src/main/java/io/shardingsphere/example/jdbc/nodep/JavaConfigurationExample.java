@@ -46,7 +46,7 @@ public class JavaConfigurationExample {
     /**
      * 可选值：SHARDING_DATABASES, SHARDING_TABLES, SHARDING_DATABASES_AND_TABLES, MASTER_SLAVE, SHARDING_MASTER_SLAVE
      */
-    private static ShardingType type = ShardingType.MASTER_SLAVE;
+    private static ShardingType type = ShardingType.SHARDING_DATABASES;
 
     /**
      * 可选值：true、false

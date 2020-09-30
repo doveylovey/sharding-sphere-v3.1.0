@@ -23,7 +23,7 @@ import io.shardingsphere.core.routing.strategy.ShardingAlgorithm;
 import java.util.Collection;
 
 /**
- * Range sharding algorithm.
+ * Range sharding algorithm. 范围分片算法
  *
  * @param <T> class type of sharding value
  * @author zhangliang

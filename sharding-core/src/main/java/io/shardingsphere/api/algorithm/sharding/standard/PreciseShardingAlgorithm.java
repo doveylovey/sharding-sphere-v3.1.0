@@ -23,7 +23,7 @@ import io.shardingsphere.core.routing.strategy.ShardingAlgorithm;
 import java.util.Collection;
 
 /**
- * Precise sharding algorithm.
+ * Precise sharding algorithm. 精确分片算法
  *
  * @param <T> class type of sharding value
  * @author zhangliang

@@ -23,7 +23,6 @@ import io.shardingsphere.api.algorithm.sharding.standard.PreciseShardingAlgorith
 import java.util.Collection;
 
 public final class PreciseModuloAlgorithm implements PreciseShardingAlgorithm<Integer> {
-
     @Override
     public String doSharding(final Collection<String> availableTargetNames, final PreciseShardingValue<Integer> shardingValue) {
         for (String each : availableTargetNames) {
