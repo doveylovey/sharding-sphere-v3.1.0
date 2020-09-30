@@ -1,0 +1,25 @@
+dataSources:
+  ds_master: !!org.apache.commons.dbcp.BasicDataSource
+    driverClassName: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3337/demo_master_slave?serverTimezone=Asia/Shanghai&characterEncoding=utf8&useUnicode=true&useSSL=false
+    username: root
+    password: root
+  ds_slave_0: !!org.apache.commons.dbcp.BasicDataSource
+    driverClassName: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3338/demo_master_slave?serverTimezone=Asia/Shanghai&characterEncoding=utf8&useUnicode=true&useSSL=false
+    username: root
+    password: root
+  ds_slave_1: !!org.apache.commons.dbcp.BasicDataSource
+    driverClassName: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3339/demo_master_slave?serverTimezone=Asia/Shanghai&characterEncoding=utf8&useUnicode=true&useSSL=false
+    username: root
+    password: root
+
+masterSlaveRule:
+  name: ds_ms
+  masterDataSourceName: ds_master
+  slaveDataSourceNames: [ds_slave_0, ds_slave_1]
+#  slaveDataSourceNames: [ds_slave_0]
+
+props:
+  sql.show: true
