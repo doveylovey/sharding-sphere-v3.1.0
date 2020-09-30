@@ -44,13 +44,9 @@ import java.util.Properties;
 @Getter
 @Setter
 public class YamlShardingConfiguration {
-
     private Map<String, DataSource> dataSources = new HashMap<>();
-
     private YamlShardingRuleConfiguration shardingRule;
-
     private Map<String, Object> configMap = new LinkedHashMap<>();
-
     private Properties props = new Properties();
 
     /**
@@ -61,10 +57,7 @@ public class YamlShardingConfiguration {
      * @throws IOException IO Exception
      */
     public static YamlShardingConfiguration unmarshal(final File yamlFile) throws IOException {
-        try (
-                FileInputStream fileInputStream = new FileInputStream(yamlFile);
-                InputStreamReader inputStreamReader = new InputStreamReader(fileInputStream, "UTF-8")
-        ) {
+        try (FileInputStream fileInputStream = new FileInputStream(yamlFile); InputStreamReader inputStreamReader = new InputStreamReader(fileInputStream, "UTF-8")) {
             return new Yaml(new Constructor(YamlShardingConfiguration.class)).loadAs(inputStreamReader, YamlShardingConfiguration.class);
         }
     }

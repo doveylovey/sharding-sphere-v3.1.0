@@ -39,9 +39,7 @@ import java.util.Set;
 @EqualsAndHashCode
 @ToString
 public final class TableUnit {
-
     private final String dataSourceName;
-
     private final List<RoutingTable> routingTables = new LinkedList<>();
 
     /**

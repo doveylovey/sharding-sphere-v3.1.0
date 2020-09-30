@@ -36,18 +36,14 @@ import java.util.concurrent.TimeUnit;
  */
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
 public final class ShardingExecutorService {
-
     private static final String DEFAULT_NAME_FORMAT = "%d";
-
     private static final ExecutorService SHUTDOWN_EXECUTOR = Executors.newSingleThreadExecutor(ShardingThreadFactoryBuilder.build("Executor-Engine-Closer"));
 
     @Getter
     private ListeningExecutorService executorService;
 
     public ShardingExecutorService(final int executorSize, final String nameFormat) {
-        executorService = MoreExecutors.listeningDecorator(0 == executorSize
-                ? Executors.newCachedThreadPool(ShardingThreadFactoryBuilder.build(nameFormat))
-                : Executors.newFixedThreadPool(executorSize, ShardingThreadFactoryBuilder.build(nameFormat)));
+        executorService = MoreExecutors.listeningDecorator(0 == executorSize ? Executors.newCachedThreadPool(ShardingThreadFactoryBuilder.build(nameFormat)) : Executors.newFixedThreadPool(executorSize, ShardingThreadFactoryBuilder.build(nameFormat)));
         MoreExecutors.addDelayedShutdownHook(executorService, 60, TimeUnit.SECONDS);
     }
 
@@ -60,7 +56,6 @@ public final class ShardingExecutorService {
      */
     public void close() {
         SHUTDOWN_EXECUTOR.execute(new Runnable() {
-
             @Override
             public void run() {
                 try {

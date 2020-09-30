@@ -44,21 +44,13 @@ import java.util.Map.Entry;
 @Getter
 @Setter
 public class YamlShardingRuleConfiguration {
-
     private String defaultDataSourceName;
-
     private Map<String, YamlTableRuleConfiguration> tables = new LinkedHashMap<>();
-
     private Collection<String> bindingTables = new ArrayList<>();
-
     private Collection<String> broadcastTables = new ArrayList<>();
-
     private YamlShardingStrategyConfiguration defaultDatabaseStrategy;
-
     private YamlShardingStrategyConfiguration defaultTableStrategy;
-
     private String defaultKeyGeneratorClassName;
-
     private Map<String, YamlMasterSlaveRuleConfiguration> masterSlaveRules = new LinkedHashMap<>();
 
     public YamlShardingRuleConfiguration(final ShardingRuleConfiguration shardingRuleConfiguration) {

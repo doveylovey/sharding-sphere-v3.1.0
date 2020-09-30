@@ -34,10 +34,8 @@ import java.util.TreeSet;
  * @author zhangliang
  */
 public final class ComplexShardingStrategy implements ShardingStrategy {
-
     @Getter
     private final Collection<String> shardingColumns;
-
     private final ComplexKeysShardingAlgorithm shardingAlgorithm;
 
     public ComplexShardingStrategy(final ComplexShardingStrategyConfiguration complexShardingStrategyConfig) {

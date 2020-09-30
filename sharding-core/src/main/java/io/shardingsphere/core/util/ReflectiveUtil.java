@@ -25,7 +25,6 @@ import java.lang.reflect.Method;
  * @author zhaojun
  */
 public class ReflectiveUtil {
-
     /**
      * Find method using reflect.
      *

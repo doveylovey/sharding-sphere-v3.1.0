@@ -32,7 +32,6 @@ import org.antlr.v4.runtime.TokenStream;
  * @author duhongjun
  */
 public final class OracleParser extends OracleStatementParser implements SQLParser {
-
     private final AdvancedMatchHandler advancedMatchHandler;
 
     public OracleParser(final TokenStream input) {

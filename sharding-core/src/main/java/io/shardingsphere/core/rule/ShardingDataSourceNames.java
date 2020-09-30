@@ -32,7 +32,6 @@ import java.util.LinkedHashSet;
  * @author zhangliang
  */
 public final class ShardingDataSourceNames {
-
     private final ShardingRuleConfiguration shardingRuleConfig;
 
     @Getter

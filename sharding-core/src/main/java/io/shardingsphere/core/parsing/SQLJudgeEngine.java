@@ -57,7 +57,6 @@ import lombok.RequiredArgsConstructor;
  */
 @RequiredArgsConstructor
 public final class SQLJudgeEngine {
-
     private final String sql;
 
     /**

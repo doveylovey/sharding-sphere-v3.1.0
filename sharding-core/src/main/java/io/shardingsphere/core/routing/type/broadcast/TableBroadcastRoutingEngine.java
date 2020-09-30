@@ -44,9 +44,7 @@ import java.util.List;
  */
 @RequiredArgsConstructor
 public final class TableBroadcastRoutingEngine implements RoutingEngine {
-
     private final ShardingRule shardingRule;
-
     private final SQLStatement sqlStatement;
 
     @Override

@@ -40,20 +40,16 @@ import java.util.LinkedList;
 import java.util.List;
 
 /**
- * Insert optimize engine.
+ * Insert optimize engine. 插入优化引擎
  *
  * @author zhangliang
  * @author maxiaoguang
  */
 @RequiredArgsConstructor
 public final class InsertOptimizeEngine implements OptimizeEngine {
-
     private final ShardingRule shardingRule;
-
     private final InsertStatement insertStatement;
-
     private final List<Object> parameters;
-
     private final GeneratedKey generatedKey;
 
     @Override
@@ -107,8 +103,7 @@ public final class InsertOptimizeEngine implements OptimizeEngine {
     }
 
     private ListShardingValue getShardingCondition(final Column column, final Number value) {
-        return new ListShardingValue<>(column.getTableName(), column.getName(),
-                new GeneratedKeyCondition(column, -1, value).getConditionValues(parameters));
+        return new ListShardingValue<>(column.getTableName(), column.getName(), new GeneratedKeyCondition(column, -1, value).getConditionValues(parameters));
     }
 
     private Collection<ListShardingValue> getShardingCondition(final AndCondition andCondition) {

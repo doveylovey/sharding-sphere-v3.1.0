@@ -39,7 +39,6 @@ import java.util.Set;
 @Getter
 @ToString
 public final class TableUnits {
-
     private final Collection<TableUnit> tableUnits = new LinkedHashSet<>();
 
     /**

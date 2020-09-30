@@ -23,7 +23,6 @@ package io.shardingsphere.core.rewrite.placeholder;
  * @author zhangliang
  */
 public interface ShardingPlaceholder {
-
     /**
      * Get logic table name.
      *

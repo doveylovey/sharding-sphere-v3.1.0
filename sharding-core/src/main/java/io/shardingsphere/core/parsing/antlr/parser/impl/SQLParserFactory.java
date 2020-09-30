@@ -43,7 +43,6 @@ import lombok.NoArgsConstructor;
  */
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 public final class SQLParserFactory {
-
     /**
      * New instance of SQL parser.
      *

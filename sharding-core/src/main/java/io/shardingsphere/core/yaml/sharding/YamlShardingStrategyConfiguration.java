@@ -48,15 +48,10 @@ import lombok.Setter;
 @Getter
 @Setter
 public class YamlShardingStrategyConfiguration {
-
     private YamlStandardShardingStrategyConfiguration standard;
-
     private YamlComplexShardingStrategyConfiguration complex;
-
     private YamlHintShardingStrategyConfiguration hint;
-
     private YamlInlineShardingStrategyConfiguration inline;
-
     private YamlNoneShardingStrategyConfiguration none;
 
     public YamlShardingStrategyConfiguration(final ShardingStrategyConfiguration shardingStrategyConfiguration) {
@@ -65,8 +60,7 @@ public class YamlShardingStrategyConfiguration {
             StandardShardingStrategyConfiguration config = (StandardShardingStrategyConfiguration) shardingStrategyConfiguration;
             standard.setShardingColumn(config.getShardingColumn());
             standard.setPreciseAlgorithmClassName(config.getPreciseShardingAlgorithm().getClass().getName());
-            standard.setRangeAlgorithmClassName(null == config.getRangeShardingAlgorithm()
-                    ? null : config.getRangeShardingAlgorithm().getClass().getName());
+            standard.setRangeAlgorithmClassName(null == config.getRangeShardingAlgorithm() ? null : config.getRangeShardingAlgorithm().getClass().getName());
         }
         if (shardingStrategyConfiguration instanceof ComplexShardingStrategyConfiguration) {
             complex = new YamlComplexShardingStrategyConfiguration();
@@ -97,12 +91,9 @@ public class YamlShardingStrategyConfiguration {
         if (null != standard) {
             shardingStrategyConfigCount++;
             if (null == standard.getRangeAlgorithmClassName()) {
-                result = new StandardShardingStrategyConfiguration(standard.getShardingColumn(),
-                        ShardingAlgorithmFactory.newInstance(standard.getPreciseAlgorithmClassName(), PreciseShardingAlgorithm.class));
+                result = new StandardShardingStrategyConfiguration(standard.getShardingColumn(), ShardingAlgorithmFactory.newInstance(standard.getPreciseAlgorithmClassName(), PreciseShardingAlgorithm.class));
             } else {
-                result = new StandardShardingStrategyConfiguration(standard.getShardingColumn(),
-                        ShardingAlgorithmFactory.newInstance(standard.getPreciseAlgorithmClassName(), PreciseShardingAlgorithm.class),
-                        ShardingAlgorithmFactory.newInstance(standard.getRangeAlgorithmClassName(), RangeShardingAlgorithm.class));
+                result = new StandardShardingStrategyConfiguration(standard.getShardingColumn(), ShardingAlgorithmFactory.newInstance(standard.getPreciseAlgorithmClassName(), PreciseShardingAlgorithm.class), ShardingAlgorithmFactory.newInstance(standard.getRangeAlgorithmClassName(), RangeShardingAlgorithm.class));
             }
 
         }

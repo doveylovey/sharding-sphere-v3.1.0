@@ -25,7 +25,6 @@ import org.antlr.v4.runtime.ParserRuleContext;
  * @author zhangliang
  */
 public interface SQLParser {
-
     /**
      * Execute to parse SQL to AST.
      *

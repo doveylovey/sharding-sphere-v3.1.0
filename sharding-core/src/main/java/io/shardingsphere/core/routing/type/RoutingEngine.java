@@ -23,7 +23,6 @@ package io.shardingsphere.core.routing.type;
  * @author zhangliang
  */
 public interface RoutingEngine {
-
     /**
      * Route.
      *

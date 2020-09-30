@@ -37,7 +37,6 @@ import lombok.NoArgsConstructor;
  */
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 public final class ShardingStrategyFactory {
-
     /**
      * Create sharding algorithm.
      *

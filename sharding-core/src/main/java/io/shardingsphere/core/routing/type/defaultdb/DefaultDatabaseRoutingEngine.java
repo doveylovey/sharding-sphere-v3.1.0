@@ -35,9 +35,7 @@ import java.util.List;
  */
 @RequiredArgsConstructor
 public final class DefaultDatabaseRoutingEngine implements RoutingEngine {
-
     private final ShardingRule shardingRule;
-
     private final Collection<String> logicTables;
 
     @Override

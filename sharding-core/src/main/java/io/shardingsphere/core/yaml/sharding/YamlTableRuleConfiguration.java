@@ -35,19 +35,12 @@ import lombok.Setter;
 @Getter
 @Setter
 public class YamlTableRuleConfiguration {
-
     private String logicTable;
-
     private String actualDataNodes;
-
     private YamlShardingStrategyConfiguration databaseStrategy;
-
     private YamlShardingStrategyConfiguration tableStrategy;
-
     private String keyGeneratorColumnName;
-
     private String keyGeneratorClassName;
-
     private String logicIndex;
 
     public YamlTableRuleConfiguration(final TableRuleConfiguration tableRuleConfiguration) {
@@ -56,8 +49,7 @@ public class YamlTableRuleConfiguration {
         databaseStrategy = new YamlShardingStrategyConfiguration(tableRuleConfiguration.getDatabaseShardingStrategyConfig());
         tableStrategy = new YamlShardingStrategyConfiguration(tableRuleConfiguration.getTableShardingStrategyConfig());
         keyGeneratorColumnName = tableRuleConfiguration.getKeyGeneratorColumnName();
-        keyGeneratorClassName = null == tableRuleConfiguration.getKeyGenerator()
-                ? null : tableRuleConfiguration.getKeyGenerator().getClass().getName();
+        keyGeneratorClassName = null == tableRuleConfiguration.getKeyGenerator() ? null : tableRuleConfiguration.getKeyGenerator().getClass().getName();
     }
 
     /**

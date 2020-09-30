@@ -31,9 +31,7 @@ import lombok.RequiredArgsConstructor;
  */
 @RequiredArgsConstructor
 public final class InstanceBroadcastRoutingEngine implements RoutingEngine {
-
     private final ShardingRule shardingRule;
-
     private final ShardingDataSourceMetaData shardingDataSourceMetaData;
 
     @Override

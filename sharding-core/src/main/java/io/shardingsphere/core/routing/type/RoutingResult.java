@@ -26,7 +26,6 @@ import lombok.Getter;
  */
 @Getter
 public class RoutingResult {
-
     private final TableUnits tableUnits = new TableUnits();
 
     /**

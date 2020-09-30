@@ -33,10 +33,8 @@ import java.util.TreeSet;
  * @author zhangliang
  */
 public final class HintShardingStrategy implements ShardingStrategy {
-
     @Getter
     private final Collection<String> shardingColumns;
-
     private final HintShardingAlgorithm shardingAlgorithm;
 
     public HintShardingStrategy(final HintShardingStrategyConfiguration hintShardingStrategyConfig) {

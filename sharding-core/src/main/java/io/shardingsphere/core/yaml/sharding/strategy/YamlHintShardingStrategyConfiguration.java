@@ -28,6 +28,5 @@ import lombok.Setter;
 @Getter
 @Setter
 public final class YamlHintShardingStrategyConfiguration implements YamlShardingStrategyConfiguration {
-
     private String algorithmClassName;
 }

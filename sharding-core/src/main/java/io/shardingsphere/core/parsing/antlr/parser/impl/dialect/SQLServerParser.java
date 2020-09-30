@@ -32,7 +32,6 @@ import org.antlr.v4.runtime.TokenStream;
  * @author duhongjun
  */
 public final class SQLServerParser extends SQLServerStatementParser implements SQLParser {
-
     private final AdvancedMatchHandler advancedMatchHandler;
 
     public SQLServerParser(final TokenStream input) {

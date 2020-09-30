@@ -35,11 +35,8 @@ import java.util.List;
 @Getter
 @ToString
 public final class DataNode {
-
     private static final String DELIMITER = ".";
-
     private final String dataSourceName;
-
     private final String tableName;
 
     /**
@@ -69,8 +66,7 @@ public final class DataNode {
             return false;
         }
         DataNode dataNode = (DataNode) object;
-        return Objects.equal(this.dataSourceName.toUpperCase(), dataNode.dataSourceName.toUpperCase())
-                && Objects.equal(this.tableName.toUpperCase(), dataNode.tableName.toUpperCase());
+        return Objects.equal(this.dataSourceName.toUpperCase(), dataNode.dataSourceName.toUpperCase()) && Objects.equal(this.tableName.toUpperCase(), dataNode.tableName.toUpperCase());
     }
 
     @Override

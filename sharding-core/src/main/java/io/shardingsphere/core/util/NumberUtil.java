@@ -32,7 +32,6 @@ import java.math.BigInteger;
  */
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
 public final class NumberUtil {
-
     /**
      * Round half up.
      *

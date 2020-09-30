@@ -39,9 +39,7 @@ import java.util.Collections;
  */
 @RequiredArgsConstructor
 public final class DatabaseHintRoutingEngine implements RoutingEngine {
-
     private final Collection<String> dataSourceNames;
-
     private final HintShardingStrategy databaseShardingStrategy;
 
     @Override

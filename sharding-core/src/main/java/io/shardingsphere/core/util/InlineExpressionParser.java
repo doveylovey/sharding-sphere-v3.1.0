@@ -43,13 +43,9 @@ import java.util.Set;
  */
 @RequiredArgsConstructor
 public final class InlineExpressionParser {
-
     private static final char SPLITTER = ',';
-
     private static final Map<String, Script> SCRIPTS = new HashMap<>();
-
     private static final GroovyShell SHELL = new GroovyShell();
-
     private final String inlineExpression;
 
     /**

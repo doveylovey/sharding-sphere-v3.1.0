@@ -25,7 +25,6 @@ package io.shardingsphere.core.routing.router.masterslave;
  * @author zhangliang
  */
 public final class MasterVisitedManager {
-
     private static final ThreadLocal<Boolean> MASTER_VISITED = new ThreadLocal<Boolean>() {
 
         @Override

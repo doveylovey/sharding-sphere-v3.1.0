@@ -40,7 +40,7 @@ import java.util.List;
 import java.util.TreeSet;
 
 /**
- * Databases and tables sharding rule configuration.
+ * Databases and tables sharding rule configuration. 数据库和表分片规则配置
  *
  * @author zhangliang
  * @author maxiaoguang
@@ -48,23 +48,14 @@ import java.util.TreeSet;
  */
 @Getter
 public class ShardingRule {
-
     private final ShardingRuleConfiguration shardingRuleConfig;
-
     private final ShardingDataSourceNames shardingDataSourceNames;
-
     private final Collection<TableRule> tableRules = new LinkedList<>();
-
     private final Collection<BindingTableRule> bindingTableRules = new LinkedList<>();
-
     private final Collection<String> broadcastTables = new LinkedList<>();
-
     private final ShardingStrategy defaultDatabaseShardingStrategy;
-
     private final ShardingStrategy defaultTableShardingStrategy;
-
     private final KeyGenerator defaultKeyGenerator;
-
     private final Collection<MasterSlaveRule> masterSlaveRules = new LinkedList<>();
 
     public ShardingRule(final ShardingRuleConfiguration shardingRuleConfig, final Collection<String> dataSourceNames) {
@@ -94,7 +85,7 @@ public class ShardingRule {
     }
 
     /**
-     * Find table rule though logic table name.
+     * Find table rule though logic table name. 通过逻辑表名称查找表规则
      *
      * @param logicTableName logic table name
      * @return table rule
@@ -109,7 +100,7 @@ public class ShardingRule {
     }
 
     /**
-     * Find table rule though actual table name.
+     * Find table rule though actual table name. 通过真实表名称查找表规则
      *
      * @param actualTableName actual table name
      * @return table rule
@@ -124,12 +115,13 @@ public class ShardingRule {
     }
 
     /**
-     * Find table rule though logic table name.
+     * Find table rule though logic table name. 通过逻辑表名称查找表规则
      *
      * @param logicTableName logic table name
      * @return table rule
      */
     public TableRule getTableRuleByLogicTableName(final String logicTableName) {
+        // 获取表规则
         Optional<TableRule> tableRule = findTableRuleByLogicTable(logicTableName.toLowerCase());
         if (tableRule.isPresent()) {
             return tableRule.get();
@@ -144,11 +136,8 @@ public class ShardingRule {
     }
 
     /**
-     * Get database sharding strategy.
-     *
-     * <p>
-     * Use default database sharding strategy if not found.
-     * </p>
+     * 获取数据库分片策略，如果未找到，请使用默认的数据库分片策略。
+     * Get database sharding strategy. Use default database sharding strategy if not found.
      *
      * @param tableRule table rule
      * @return database sharding strategy
@@ -158,11 +147,8 @@ public class ShardingRule {
     }
 
     /**
-     * Get table sharding strategy.
-     *
-     * <p>
-     * Use default table sharding strategy if not found.
-     * </p>
+     * 获取表分片策略，如果未找到，请使用默认表分片策略。
+     * Get table sharding strategy. Use default table sharding strategy if not found.
      *
      * @param tableRule table rule
      * @return table sharding strategy
@@ -172,7 +158,7 @@ public class ShardingRule {
     }
 
     /**
-     * Adjust logic table is belong to broadcast tables.
+     * Adjust logic table is belong to broadcast tables. 调整逻辑表属于广播表
      *
      * @param logicTable logic table name
      * @return logic table is belong to broadcast tables or not
@@ -182,7 +168,7 @@ public class ShardingRule {
     }
 
     /**
-     * Adjust logic tables is all belong to broadcast tables.
+     * Adjust logic tables is all belong to broadcast tables. 调整逻辑表全部属于广播表
      *
      * @param logicTables names of logic tables
      * @return logic tables is all belong to broadcast tables or not
@@ -200,7 +186,7 @@ public class ShardingRule {
     }
 
     /**
-     * Adjust logic tables is all belong to binding tables.
+     * Adjust logic tables is all belong to binding tables. 调整逻辑表全部属于绑定表
      *
      * @param logicTables names of logic tables
      * @return logic tables is all belong to binding tables or not
@@ -219,7 +205,7 @@ public class ShardingRule {
     }
 
     /**
-     * Adjust logic tables is all belong to default data source.
+     * Adjust logic tables is all belong to default data source. 调整逻辑表全部属于默认数据源
      *
      * @param logicTables names of logic tables
      * @return logic tables is all belong to default data source
@@ -247,7 +233,7 @@ public class ShardingRule {
     }
 
     /**
-     * Get binding table rule via logic table name.
+     * Get binding table rule via logic table name. 通过逻辑表名称获取绑定表规则
      *
      * @param logicTable logic table name
      * @return binding table rule
@@ -283,7 +269,7 @@ public class ShardingRule {
     }
 
     /**
-     * get generated key's column.
+     * get generated key's column. 获取生成键的列
      *
      * @param logicTableName logic table name
      * @return generated key's column
@@ -298,7 +284,7 @@ public class ShardingRule {
     }
 
     /**
-     * Generate key.
+     * Generate key. 生成键
      *
      * @param logicTableName logic table name
      * @return generated key
@@ -315,7 +301,7 @@ public class ShardingRule {
     }
 
     /**
-     * Get logic table name base on logic index name.
+     * Get logic table name base on logic index name. 根据逻辑索引名称获取逻辑表名称
      *
      * @param logicIndexName logic index name
      * @return logic table name
@@ -330,7 +316,7 @@ public class ShardingRule {
     }
 
     /**
-     * Find data node by logic table.
+     * Find data node by logic table. 通过逻辑表查找数据节点
      *
      * @param logicTableName logic table name
      * @return data node
@@ -340,7 +326,7 @@ public class ShardingRule {
     }
 
     /**
-     * Find data node by data source and logic table.
+     * Find data node by data source and logic table. 通过数据源和逻辑表查找数据节点
      *
      * @param dataSourceName data source name
      * @param logicTableName logic table name
@@ -361,7 +347,7 @@ public class ShardingRule {
     }
 
     /**
-     * Adjust is logic index or not.
+     * Adjust is logic index or not. 调整是否为逻辑索引
      *
      * @param logicIndexName logic index name
      * @param logicTableName logic table name
@@ -372,7 +358,7 @@ public class ShardingRule {
     }
 
     /**
-     * Find actual default data source name.
+     * Find actual default data source name. 查找实际的默认数据源名称
      *
      * <p>If use master-slave rule, return master data source name.</p>
      *
@@ -396,7 +382,7 @@ public class ShardingRule {
     }
 
     /**
-     * Find master slave rule.
+     * Find master slave rule. 查找主从规则
      *
      * @param dataSourceName data source name
      * @return master slave rule
@@ -411,7 +397,7 @@ public class ShardingRule {
     }
 
     /**
-     * Get actual data source name by actual table name.
+     * Get actual data source name by actual table name. 通过实际的表名称获取实际的数据源名称
      *
      * @param actualTableName actual table name
      * @return actual data source name
@@ -428,7 +414,7 @@ public class ShardingRule {
     }
 
     /**
-     * Adjust contains table in sharding rule.
+     * Adjust contains table in sharding rule. 调整分片规则中包含的表
      *
      * @param tableName table name
      * @return contains table in sharding rule or not

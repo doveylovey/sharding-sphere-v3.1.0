@@ -32,7 +32,6 @@ import org.antlr.v4.runtime.TokenStream;
  * @author duhongjun
  */
 public final class PostgreSQLParser extends PostgreSQLStatementParser implements SQLParser {
-
     private final AdvancedMatchHandler advancedMatchHandler;
 
     public PostgreSQLParser(final TokenStream input) {

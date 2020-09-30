@@ -39,11 +39,8 @@ import java.util.TreeSet;
  * @author zhangliang
  */
 public final class StandardShardingStrategy implements ShardingStrategy {
-
     private final String shardingColumn;
-
     private final PreciseShardingAlgorithm preciseShardingAlgorithm;
-
     private final RangeShardingAlgorithm rangeShardingAlgorithm;
 
     public StandardShardingStrategy(final StandardShardingStrategyConfiguration standardShardingStrategyConfig) {
@@ -57,8 +54,7 @@ public final class StandardShardingStrategy implements ShardingStrategy {
     @Override
     public Collection<String> doSharding(final Collection<String> availableTargetNames, final Collection<ShardingValue> shardingValues) {
         ShardingValue shardingValue = shardingValues.iterator().next();
-        Collection<String> shardingResult = shardingValue instanceof ListShardingValue
-                ? doSharding(availableTargetNames, (ListShardingValue) shardingValue) : doSharding(availableTargetNames, (RangeShardingValue) shardingValue);
+        Collection<String> shardingResult = shardingValue instanceof ListShardingValue ? doSharding(availableTargetNames, (ListShardingValue) shardingValue) : doSharding(availableTargetNames, (RangeShardingValue) shardingValue);
         Collection<String> result = new TreeSet<>(String.CASE_INSENSITIVE_ORDER);
         result.addAll(shardingResult);
         return result;

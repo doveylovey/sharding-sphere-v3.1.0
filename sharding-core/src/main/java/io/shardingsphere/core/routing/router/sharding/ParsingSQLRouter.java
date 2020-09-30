@@ -54,7 +54,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 /**
- * Sharding router with parse.
+ * Sharding router with parse. SQL 解析的分片路由器
  *
  * @author zhangliang
  * @author maxiaoguang
@@ -62,17 +62,11 @@ import java.util.List;
  */
 @RequiredArgsConstructor
 public final class ParsingSQLRouter implements ShardingRouter {
-
     private final ShardingRule shardingRule;
-
     private final ShardingMetaData shardingMetaData;
-
     private final DatabaseType databaseType;
-
     private final boolean showSQL;
-
     private final List<Number> generatedKeys = new LinkedList<>();
-
     private final ParsingHook parsingHook = new SPIParsingHook();
 
     @Override
@@ -90,8 +84,11 @@ public final class ParsingSQLRouter implements ShardingRouter {
 
     @Override
     public SQLRouteResult route(final String logicSQL, final List<Object> parameters, final SQLStatement sqlStatement) {
+        // 是否 insert 语句：是-获取generatedKey、否-generatedKey为空
         Optional<GeneratedKey> generatedKey = sqlStatement instanceof InsertStatement ? getGenerateKey(shardingRule, (InsertStatement) sqlStatement, parameters) : Optional.<GeneratedKey>absent();
+        // SQL 路由结果
         SQLRouteResult result = new SQLRouteResult(sqlStatement, generatedKey.orNull());
+        // 工厂模式创建优化引擎，然后进行优化
         ShardingConditions shardingConditions = OptimizeEngineFactory.newInstance(shardingRule, sqlStatement, parameters, generatedKey.orNull()).optimize();
         if (generatedKey.isPresent()) {
             setGeneratedKeys(result, generatedKey.get());
@@ -99,11 +96,14 @@ public final class ParsingSQLRouter implements ShardingRouter {
         if (sqlStatement instanceof SelectStatement && !sqlStatement.getTables().isEmpty() && !((SelectStatement) sqlStatement).getSubQueryConditions().isEmpty()) {
             mergeShardingValueForSubQuery(sqlStatement.getConditions(), shardingConditions);
         }
+        // 工厂模式创建路由引擎，然后进行路由
         RoutingResult routingResult = RoutingEngineFactory.newInstance(shardingRule, shardingMetaData.getDataSource(), sqlStatement, shardingConditions).route();
+        // 创建并初始化 SQL 重写引擎
         SQLRewriteEngine rewriteEngine = new SQLRewriteEngine(shardingRule, logicSQL, databaseType, sqlStatement, shardingConditions, parameters);
         if (sqlStatement instanceof SelectStatement && null != ((SelectStatement) sqlStatement).getLimit()) {
             processLimit(parameters, (SelectStatement) sqlStatement);
         }
+        // SQL 重写
         SQLBuilder sqlBuilder = rewriteEngine.rewrite(routingResult.isSingleRouting());
         for (TableUnit each : routingResult.getTableUnits().getTableUnits()) {
             result.getRouteUnits().add(new RouteUnit(each.getDataSourceName(), rewriteEngine.generateSQL(each, sqlBuilder, shardingMetaData.getDataSource())));
@@ -206,8 +206,7 @@ public final class ParsingSQLRouter implements ShardingRouter {
     }
 
     private boolean isSameShardingValue(final ListShardingValue shardingValue1, final ListShardingValue shardingValue2) {
-        return isSameLogicTable(shardingValue1, shardingValue2)
-                && shardingValue1.getColumnName().equals(shardingValue2.getColumnName()) && shardingValue1.getValues().equals(shardingValue2.getValues());
+        return isSameLogicTable(shardingValue1, shardingValue2) && shardingValue1.getColumnName().equals(shardingValue2.getColumnName()) && shardingValue1.getValues().equals(shardingValue2.getValues());
     }
 
     private boolean isSameLogicTable(final ListShardingValue shardingValue1, final ListShardingValue shardingValue2) {

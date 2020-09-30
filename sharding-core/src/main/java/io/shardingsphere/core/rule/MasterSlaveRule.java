@@ -33,15 +33,10 @@ import java.util.Collection;
  */
 @Getter
 public class MasterSlaveRule {
-
     private final String name;
-
     private final String masterDataSourceName;
-
     private final Collection<String> slaveDataSourceNames;
-
     private final MasterSlaveLoadBalanceAlgorithm loadBalanceAlgorithm;
-
     private final MasterSlaveRuleConfiguration masterSlaveRuleConfiguration;
 
     public MasterSlaveRule(final MasterSlaveRuleConfiguration config) {

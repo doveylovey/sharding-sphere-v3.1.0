@@ -28,9 +28,7 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 @Getter
 public final class TablePlaceholder implements ShardingPlaceholder {
-
     private final String logicTableName;
-
     private final String originalLiterals;
 
     @Override

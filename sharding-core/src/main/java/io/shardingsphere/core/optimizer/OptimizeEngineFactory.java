@@ -31,14 +31,13 @@ import lombok.NoArgsConstructor;
 import java.util.List;
 
 /**
- * Optimize engine factory.
+ * Optimize engine factory. 优化引擎工厂
  *
  * @author zhangliang
  * @author maxiaoguang
  */
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 public final class OptimizeEngineFactory {
-
     /**
      * Create optimize engine instance.
      *

@@ -32,7 +32,6 @@ import org.antlr.v4.runtime.TokenStream;
  * @author duhongjun
  */
 public final class MySQLParser extends MySQLStatementParser implements SQLParser {
-
     private final AdvancedMatchHandler advancedMatchHandler;
 
     public MySQLParser(final TokenStream input) {

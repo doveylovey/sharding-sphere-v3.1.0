@@ -38,13 +38,9 @@ import java.util.Collection;
  * @author zhangliang
  */
 public final class AntlrParsingEngine implements SQLParser {
-
     private final SQLParserEngine parserEngine;
-
     private final SQLSegmentsExtractorEngine extractorEngine;
-
     private final SQLStatementFillerEngine fillerEngine;
-
     private final SQLStatementOptimizerEngine optimizerEngine;
 
     public AntlrParsingEngine(final DatabaseType databaseType, final String sql, final ShardingRule shardingRule, final ShardingTableMetaData shardingTableMetaData) {

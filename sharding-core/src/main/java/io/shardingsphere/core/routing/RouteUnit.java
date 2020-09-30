@@ -33,8 +33,6 @@ import lombok.ToString;
 @EqualsAndHashCode
 @ToString
 public final class RouteUnit {
-
     private final String dataSourceName;
-
     private final SQLUnit sqlUnit;
 }

@@ -34,24 +34,26 @@ import java.util.Collections;
  * @author panjuan
  */
 public final class StatementRoutingEngine {
-
     private final ShardingRouter shardingRouter;
-
     private final ShardingMasterSlaveRouter masterSlaveRouter;
 
     public StatementRoutingEngine(final ShardingRule shardingRule, final ShardingMetaData shardingMetaData, final DatabaseType databaseType, final boolean showSQL) {
+        // 初始化分片路由器
         shardingRouter = ShardingRouterFactory.newInstance(shardingRule, shardingMetaData, databaseType, showSQL);
+        // 初始化主从路由器
         masterSlaveRouter = new ShardingMasterSlaveRouter(shardingRule.getMasterSlaveRules());
     }
 
     /**
-     * SQL route.
+     * SQL route. SQL 路由
      *
      * @param logicSQL logic SQL
      * @return route result
      */
     public SQLRouteResult route(final String logicSQL) {
+        // 语法解析
         SQLStatement sqlStatement = shardingRouter.parse(logicSQL, false);
+        // 路由规则路由
         return masterSlaveRouter.route(shardingRouter.route(logicSQL, Collections.emptyList(), sqlStatement));
     }
 }

@@ -32,8 +32,6 @@ import lombok.ToString;
 @EqualsAndHashCode
 @ToString
 public final class RoutingTable {
-
     private final String logicTableName;
-
     private final String actualTableName;
 }

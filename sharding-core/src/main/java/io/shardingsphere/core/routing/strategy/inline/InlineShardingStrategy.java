@@ -39,9 +39,7 @@ import java.util.TreeSet;
  * @author zhangliang
  */
 public final class InlineShardingStrategy implements ShardingStrategy {
-
     private final String shardingColumn;
-
     private final Closure<?> closure;
 
     public InlineShardingStrategy(final InlineShardingStrategyConfiguration inlineShardingStrategyConfig) {

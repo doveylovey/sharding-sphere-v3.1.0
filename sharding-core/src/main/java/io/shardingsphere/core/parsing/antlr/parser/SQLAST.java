@@ -30,8 +30,6 @@ import org.antlr.v4.runtime.ParserRuleContext;
 @RequiredArgsConstructor
 @Getter
 public final class SQLAST {
-
     private final ParserRuleContext parserRuleContext;
-
     private final SQLStatementRule rule;
 }

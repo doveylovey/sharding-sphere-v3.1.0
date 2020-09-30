@@ -68,19 +68,12 @@ import java.util.Map;
  * @author panjuan
  */
 public final class SQLRewriteEngine {
-
     private final ShardingRule shardingRule;
-
     private final String originalSQL;
-
     private final DatabaseType databaseType;
-
     private final SQLStatement sqlStatement;
-
     private final List<SQLToken> sqlTokens;
-
     private final ShardingConditions shardingConditions;
-
     private final List<Object> parameters;
 
     /**
@@ -93,8 +86,7 @@ public final class SQLRewriteEngine {
      * @param shardingConditions sharding conditions
      * @param parameters         parameters
      */
-    public SQLRewriteEngine(final ShardingRule shardingRule, final String originalSQL, final DatabaseType databaseType,
-                            final SQLStatement sqlStatement, final ShardingConditions shardingConditions, final List<Object> parameters) {
+    public SQLRewriteEngine(final ShardingRule shardingRule, final String originalSQL, final DatabaseType databaseType, final SQLStatement sqlStatement, final ShardingConditions shardingConditions, final List<Object> parameters) {
         this.shardingRule = shardingRule;
         this.originalSQL = originalSQL;
         this.databaseType = databaseType;
@@ -135,7 +127,6 @@ public final class SQLRewriteEngine {
 
     private boolean isContainsAggregationDistinctToken() {
         return Iterators.tryFind(sqlTokens.iterator(), new Predicate<SQLToken>() {
-
             @Override
             public boolean apply(final SQLToken input) {
                 return input instanceof AggregationDistinctToken;
@@ -248,8 +239,7 @@ public final class SQLRewriteEngine {
             orderByLiterals.append(" ").append(DefaultKeyword.ORDER).append(" ").append(DefaultKeyword.BY).append(" ");
             int i = 0;
             for (OrderItem each : selectStatement.getOrderByItems()) {
-                String columnLabel = Strings.isNullOrEmpty(each.getColumnLabel()) ? String.valueOf(each.getIndex())
-                        : SQLUtil.getOriginalValue(each.getColumnLabel(), databaseType);
+                String columnLabel = Strings.isNullOrEmpty(each.getColumnLabel()) ? String.valueOf(each.getIndex()) : SQLUtil.getOriginalValue(each.getColumnLabel(), databaseType);
                 if (0 == i) {
                     orderByLiterals.append(columnLabel).append(" ").append(each.getOrderDirection().name());
                 } else {

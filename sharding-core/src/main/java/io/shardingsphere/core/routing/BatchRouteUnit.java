@@ -34,9 +34,7 @@ import java.util.Map;
 @EqualsAndHashCode(of = {"routeUnit"})
 @ToString
 public final class BatchRouteUnit {
-
     private final RouteUnit routeUnit;
-
     private final Map<Integer, Integer> jdbcAndActualAddBatchCallTimesMap = new LinkedHashMap<>();
 
     @Getter(AccessLevel.NONE)

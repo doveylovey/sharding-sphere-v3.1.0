@@ -42,13 +42,9 @@ import java.util.concurrent.ConcurrentHashMap;
 @Getter
 @Setter
 public class YamlMasterSlaveConfiguration {
-
     private Map<String, DataSource> dataSources = new HashMap<>();
-
     private YamlMasterSlaveRuleConfiguration masterSlaveRule;
-
     private Map<String, Object> configMap = new ConcurrentHashMap<>();
-
     private Properties props = new Properties();
 
     /**
@@ -59,10 +55,7 @@ public class YamlMasterSlaveConfiguration {
      * @throws IOException IO Exception
      */
     public static YamlMasterSlaveConfiguration unmarshal(final File yamlFile) throws IOException {
-        try (
-                FileInputStream fileInputStream = new FileInputStream(yamlFile);
-                InputStreamReader inputStreamReader = new InputStreamReader(fileInputStream, "UTF-8")
-        ) {
+        try (FileInputStream fileInputStream = new FileInputStream(yamlFile); InputStreamReader inputStreamReader = new InputStreamReader(fileInputStream, "UTF-8")) {
             return new Yaml(new Constructor(YamlMasterSlaveConfiguration.class)).loadAs(inputStreamReader, YamlMasterSlaveConfiguration.class);
         }
     }

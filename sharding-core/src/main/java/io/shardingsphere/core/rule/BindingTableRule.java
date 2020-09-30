@@ -36,7 +36,6 @@ import java.util.List;
 @RequiredArgsConstructor
 @Getter
 public final class BindingTableRule {
-
     private final List<TableRule> tableRules;
 
     /**

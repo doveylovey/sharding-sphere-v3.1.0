@@ -23,14 +23,13 @@ import io.shardingsphere.core.routing.SQLRouteResult;
 import java.util.List;
 
 /**
- * Sharding router.
+ * Sharding router. 分片路由器
  *
  * @author zhangliang
  */
 public interface ShardingRouter {
-
     /**
-     * Parse SQL.
+     * Parse SQL. SQL 解析
      *
      * @param logicSQL logic SQL
      * @param useCache use cache to save SQL parse result or not
@@ -39,7 +38,7 @@ public interface ShardingRouter {
     SQLStatement parse(String logicSQL, boolean useCache);
 
     /**
-     * Route SQL.
+     * Route SQL. SQL 路由
      *
      * @param logicSQL     logic SQL
      * @param sqlStatement SQL statement

@@ -39,16 +39,11 @@ import java.util.List;
 @Getter
 @Setter
 public abstract class AbstractSQLStatement implements SQLStatement {
-
     private final SQLType type;
-
     private final Tables tables = new Tables();
-
     private final Conditions conditions = new Conditions();
-
     @Getter(AccessLevel.NONE)
     private final List<SQLToken> sqlTokens = new LinkedList<>();
-
     private int parametersIndex;
 
     @Override

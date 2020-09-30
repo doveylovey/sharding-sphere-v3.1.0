@@ -30,6 +30,5 @@ import java.util.List;
  */
 @Getter
 public final class CreateTableStatement extends DDLStatement {
-
     private final List<ColumnDefinitionSegment> columnDefinitions = new LinkedList<>();
 }

@@ -45,7 +45,6 @@ import java.util.Set;
  */
 @RequiredArgsConstructor
 public final class CartesianRoutingEngine implements RoutingEngine {
-
     private final Collection<RoutingResult> routingResults;
 
     @Override
@@ -97,7 +96,6 @@ public final class CartesianRoutingEngine implements RoutingEngine {
         List<Set<RoutingTable>> result = new ArrayList<>(actualTableGroups.size());
         for (Set<String> each : actualTableGroups) {
             result.add(new HashSet<>(Lists.transform(new ArrayList<>(each), new Function<String, RoutingTable>() {
-
                 @Override
                 public RoutingTable apply(final String input) {
                     return findRoutingTable(dataSource, input);

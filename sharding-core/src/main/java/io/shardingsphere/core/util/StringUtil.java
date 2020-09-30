@@ -30,7 +30,6 @@ import java.util.List;
  */
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
 public final class StringUtil {
-
     /**
      * Adjust is boolean value or not.
      *

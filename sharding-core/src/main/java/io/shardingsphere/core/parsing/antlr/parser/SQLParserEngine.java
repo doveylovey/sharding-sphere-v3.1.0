@@ -35,11 +35,8 @@ import org.antlr.v4.runtime.tree.ParseTree;
  */
 @RequiredArgsConstructor
 public final class SQLParserEngine {
-
     private final ParsingRuleRegistry parsingRuleRegistry = ParsingRuleRegistry.getInstance();
-
     private final DatabaseType databaseType;
-
     private final String sql;
 
     /**

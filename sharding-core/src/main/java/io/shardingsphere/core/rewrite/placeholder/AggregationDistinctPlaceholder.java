@@ -29,11 +29,8 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 @Getter
 public final class AggregationDistinctPlaceholder implements ShardingPlaceholder {
-
     private final String columnName;
-
     private final String logicTableName;
-
     private final Optional<String> alias;
 
     @Override

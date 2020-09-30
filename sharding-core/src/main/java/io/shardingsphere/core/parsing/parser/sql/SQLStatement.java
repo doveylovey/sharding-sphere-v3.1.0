@@ -30,7 +30,6 @@ import java.util.List;
  * @author zhangliang
  */
 public interface SQLStatement {
-
     /**
      * Get SQL type.
      *

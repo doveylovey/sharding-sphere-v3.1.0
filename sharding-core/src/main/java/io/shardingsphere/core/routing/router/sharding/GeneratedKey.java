@@ -33,8 +33,6 @@ import java.util.List;
 @RequiredArgsConstructor
 @Getter
 public final class GeneratedKey {
-
     private final Column column;
-
     private final List<Number> generatedKeys = new LinkedList<>();
 }

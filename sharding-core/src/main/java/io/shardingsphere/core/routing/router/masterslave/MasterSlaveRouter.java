@@ -36,9 +36,7 @@ import java.util.Collections;
  */
 @RequiredArgsConstructor
 public final class MasterSlaveRouter {
-
     private final MasterSlaveRule masterSlaveRule;
-
     private final boolean showSQL;
 
     /**
@@ -61,8 +59,7 @@ public final class MasterSlaveRouter {
             MasterVisitedManager.setMasterVisited();
             return Collections.singletonList(masterSlaveRule.getMasterDataSourceName());
         }
-        return Collections.singletonList(masterSlaveRule.getLoadBalanceAlgorithm().getDataSource(
-                masterSlaveRule.getName(), masterSlaveRule.getMasterDataSourceName(), new ArrayList<>(masterSlaveRule.getSlaveDataSourceNames())));
+        return Collections.singletonList(masterSlaveRule.getLoadBalanceAlgorithm().getDataSource(masterSlaveRule.getName(), masterSlaveRule.getMasterDataSourceName(), new ArrayList<>(masterSlaveRule.getSlaveDataSourceNames())));
     }
 
     private boolean isMasterRoute(final SQLType sqlType) {

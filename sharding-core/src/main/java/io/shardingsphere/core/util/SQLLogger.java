@@ -35,7 +35,6 @@ import java.util.Collection;
 @Slf4j(topic = "ShardingSphere-SQL")
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 public final class SQLLogger {
-
     /**
      * Print SQL log for sharding rule.
      *

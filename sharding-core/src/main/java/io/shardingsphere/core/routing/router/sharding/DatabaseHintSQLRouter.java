@@ -35,16 +35,14 @@ import java.util.Collections;
 import java.util.List;
 
 /**
- * Sharding router for hint database only.
+ * Sharding router for hint database only. 指定数据库的分片路由器
  *
  * @author zhangliang
  * @author maxiaoguang
  */
 @RequiredArgsConstructor
 public final class DatabaseHintSQLRouter implements ShardingRouter {
-
     private final ShardingRule shardingRule;
-
     private final boolean showSQL;
 
     @Override
@@ -56,8 +54,7 @@ public final class DatabaseHintSQLRouter implements ShardingRouter {
     // TODO insert SQL need parse gen key
     public SQLRouteResult route(final String logicSQL, final List<Object> parameters, final SQLStatement sqlStatement) {
         SQLRouteResult result = new SQLRouteResult(sqlStatement);
-        RoutingResult routingResult = new DatabaseHintRoutingEngine(
-                shardingRule.getShardingDataSourceNames().getDataSourceNames(), (HintShardingStrategy) shardingRule.getDefaultDatabaseShardingStrategy()).route();
+        RoutingResult routingResult = new DatabaseHintRoutingEngine(shardingRule.getShardingDataSourceNames().getDataSourceNames(), (HintShardingStrategy) shardingRule.getDefaultDatabaseShardingStrategy()).route();
         for (TableUnit each : routingResult.getTableUnits().getTableUnits()) {
             result.getRouteUnits().add(new RouteUnit(each.getDataSourceName(), new SQLUnit(logicSQL, new ArrayList<>(Collections.singleton(parameters)))));
         }

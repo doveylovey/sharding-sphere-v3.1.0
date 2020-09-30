@@ -32,7 +32,6 @@ import lombok.AllArgsConstructor;
  */
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
 public final class SQLUtil {
-
     /**
      * Get exactly value for SQL expression.
      *

@@ -45,22 +45,14 @@ import java.util.Map;
 @Getter
 @ToString(exclude = "dataNodeIndexMap")
 public final class TableRule {
-
     private final String logicTable;
-
     private final List<DataNode> actualDataNodes;
-
     @Getter(AccessLevel.NONE)
     private final Map<DataNode, Integer> dataNodeIndexMap;
-
     private final ShardingStrategy databaseShardingStrategy;
-
     private final ShardingStrategy tableShardingStrategy;
-
     private final String generateKeyColumn;
-
     private final KeyGenerator keyGenerator;
-
     private final String logicIndex;
 
     public TableRule(final String defaultDataSourceName, final String logicTableName) {
@@ -90,8 +82,7 @@ public final class TableRule {
         logicTable = tableRuleConfig.getLogicTable().toLowerCase();
         List<String> dataNodes = new InlineExpressionParser(tableRuleConfig.getActualDataNodes()).splitAndEvaluate();
         dataNodeIndexMap = new HashMap<>(dataNodes.size(), 1);
-        actualDataNodes = isEmptyDataNodes(dataNodes)
-                ? generateDataNodes(tableRuleConfig.getLogicTable(), shardingDataSourceNames.getDataSourceNames()) : generateDataNodes(dataNodes, shardingDataSourceNames.getDataSourceNames());
+        actualDataNodes = isEmptyDataNodes(dataNodes) ? generateDataNodes(tableRuleConfig.getLogicTable(), shardingDataSourceNames.getDataSourceNames()) : generateDataNodes(dataNodes, shardingDataSourceNames.getDataSourceNames());
         databaseShardingStrategy = null == tableRuleConfig.getDatabaseShardingStrategyConfig() ? null : ShardingStrategyFactory.newInstance(tableRuleConfig.getDatabaseShardingStrategyConfig());
         tableShardingStrategy = null == tableRuleConfig.getTableShardingStrategyConfig() ? null : ShardingStrategyFactory.newInstance(tableRuleConfig.getTableShardingStrategyConfig());
         generateKeyColumn = tableRuleConfig.getKeyGeneratorColumnName();

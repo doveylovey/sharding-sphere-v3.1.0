@@ -46,15 +46,14 @@ import lombok.NoArgsConstructor;
 import java.util.Collection;
 
 /**
- * Routing engine factory.
+ * Routing engine factory. 路由引擎工厂
  *
  * @author zhangliang
  */
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 public final class RoutingEngineFactory {
-
     /**
-     * Create new instance of routing engine.
+     * Create new instance of routing engine. 创建路由引擎的新实例。
      *
      * @param shardingRule               sharding rule
      * @param shardingDataSourceMetaData sharding data source meta data
@@ -62,8 +61,7 @@ public final class RoutingEngineFactory {
      * @param shardingConditions         sharding conditions
      * @return new instance of routing engine
      */
-    public static RoutingEngine newInstance(final ShardingRule shardingRule,
-                                            final ShardingDataSourceMetaData shardingDataSourceMetaData, final SQLStatement sqlStatement, final ShardingConditions shardingConditions) {
+    public static RoutingEngine newInstance(final ShardingRule shardingRule, final ShardingDataSourceMetaData shardingDataSourceMetaData, final SQLStatement sqlStatement, final ShardingConditions shardingConditions) {
         Collection<String> tableNames = sqlStatement.getTables().getTableNames();
         RoutingEngine result;
         if (sqlStatement instanceof UseStatement) {
@@ -72,8 +70,7 @@ public final class RoutingEngineFactory {
             result = new DatabaseBroadcastRoutingEngine(shardingRule);
         } else if (sqlStatement instanceof DDLStatement || (sqlStatement instanceof DCLStatement && ((DCLStatement) sqlStatement).isGrantForSingleTable())) {
             result = new TableBroadcastRoutingEngine(shardingRule, sqlStatement);
-        } else if (sqlStatement instanceof ShowDatabasesStatement || ((sqlStatement instanceof ShowTablesStatement || sqlStatement instanceof ShowTableStatusStatement) && tableNames.isEmpty())
-                || sqlStatement instanceof SetParamStatement || sqlStatement instanceof ResetParamStatement) {
+        } else if (sqlStatement instanceof ShowDatabasesStatement || ((sqlStatement instanceof ShowTablesStatement || sqlStatement instanceof ShowTableStatusStatement) && tableNames.isEmpty()) || sqlStatement instanceof SetParamStatement || sqlStatement instanceof ResetParamStatement) {
             result = new DatabaseBroadcastRoutingEngine(shardingRule);
         } else if (sqlStatement instanceof DCLStatement) {
             result = new InstanceBroadcastRoutingEngine(shardingRule, shardingDataSourceMetaData);

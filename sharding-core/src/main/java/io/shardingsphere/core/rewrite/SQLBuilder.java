@@ -46,11 +46,8 @@ import java.util.Map;
  * @author maxiaoguang
  */
 public final class SQLBuilder {
-
     private final List<Object> segments;
-
     private final List<Object> parameters;
-
     private StringBuilder currentSegment;
 
     public SQLBuilder() {
@@ -149,8 +146,7 @@ public final class SQLBuilder {
         }
     }
 
-    private void appendSchemaPlaceholder(final ShardingRule shardingRule, final ShardingDataSourceMetaData shardingDataSourceMetaData,
-                                         final String actualTableName, final StringBuilder stringBuilder) {
+    private void appendSchemaPlaceholder(final ShardingRule shardingRule, final ShardingDataSourceMetaData shardingDataSourceMetaData, final String actualTableName, final StringBuilder stringBuilder) {
         stringBuilder.append(shardingDataSourceMetaData.getActualDataSourceMetaData(shardingRule.getActualDataSourceNameByActualTableName(actualTableName)).getSchemeName());
     }
 

@@ -35,11 +35,8 @@ import java.util.LinkedHashSet;
 @RequiredArgsConstructor
 @Getter
 public final class SQLRouteResult {
-
     private final SQLStatement sqlStatement;
-
     private final GeneratedKey generatedKey;
-
     private final Collection<RouteUnit> routeUnits = new LinkedHashSet<>();
 
     public SQLRouteResult(final SQLStatement sqlStatement) {

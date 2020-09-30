@@ -20,14 +20,13 @@ package io.shardingsphere.core.optimizer;
 import io.shardingsphere.core.optimizer.condition.ShardingConditions;
 
 /**
- * Optimize engine.
+ * Optimize engine. 优化引擎
  *
  * @author maxiaoguang
  */
 public interface OptimizeEngine {
-
     /**
-     * Optimize sharding conditions.
+     * Optimize sharding conditions. 优化分片条件
      *
      * @return sharding conditions
      */

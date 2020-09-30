@@ -39,15 +39,10 @@ import java.util.Collection;
 @Getter
 @Setter
 public class YamlMasterSlaveRuleConfiguration {
-
     private String name;
-
     private String masterDataSourceName;
-
     private Collection<String> slaveDataSourceNames = new ArrayList<>();
-
     private MasterSlaveLoadBalanceAlgorithmType loadBalanceAlgorithmType;
-
     private String loadBalanceAlgorithmClassName;
 
     public YamlMasterSlaveRuleConfiguration(final MasterSlaveRuleConfiguration masterSlaveRuleConfiguration) {

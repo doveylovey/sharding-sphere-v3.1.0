@@ -34,8 +34,6 @@ import java.util.List;
 @EqualsAndHashCode(of = {"sql"})
 @ToString
 public final class SQLUnit {
-
     private final String sql;
-
     private final List<List<Object>> parameterSets;
 }

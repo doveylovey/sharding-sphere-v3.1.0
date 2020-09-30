@@ -31,8 +31,6 @@ import lombok.ToString;
 @Getter
 @ToString
 public final class InsertValuesPlaceholder implements ShardingPlaceholder {
-
     private final String logicTableName;
-
     private final ShardingConditions shardingConditions;
 }

@@ -31,7 +31,6 @@ import java.util.Collections;
  */
 @Getter
 public final class NoneShardingStrategy implements ShardingStrategy {
-
     private final Collection<String> shardingColumns = Collections.emptyList();
 
     @Override

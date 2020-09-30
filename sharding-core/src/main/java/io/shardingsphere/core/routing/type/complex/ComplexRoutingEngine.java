@@ -42,11 +42,8 @@ import java.util.TreeSet;
  */
 @RequiredArgsConstructor
 public final class ComplexRoutingEngine implements RoutingEngine {
-
     private final ShardingRule shardingRule;
-
     private final Collection<String> logicTables;
-
     private final ShardingConditions shardingConditions;
 
     @Override
@@ -62,7 +59,6 @@ public final class ComplexRoutingEngine implements RoutingEngine {
                 Optional<BindingTableRule> bindingTableRule = shardingRule.findBindingTableRule(each);
                 if (bindingTableRule.isPresent()) {
                     bindingTableNames.addAll(Lists.transform(bindingTableRule.get().getTableRules(), new Function<TableRule, String>() {
-
                         @Override
                         public String apply(final TableRule input) {
                             return input.getLogicTable();

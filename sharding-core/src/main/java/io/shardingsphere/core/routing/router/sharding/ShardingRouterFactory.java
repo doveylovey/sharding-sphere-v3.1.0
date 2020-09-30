@@ -32,7 +32,6 @@ import lombok.NoArgsConstructor;
  */
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 public final class ShardingRouterFactory {
-
     /**
      * Create new instance of sharding router.
      *

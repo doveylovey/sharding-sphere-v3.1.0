@@ -35,7 +35,6 @@ import java.util.LinkedList;
  */
 @RequiredArgsConstructor
 public final class ShardingMasterSlaveRouter {
-
     private final Collection<MasterSlaveRule> masterSlaveRules;
 
     /**
@@ -63,8 +62,7 @@ public final class ShardingMasterSlaveRouter {
                 MasterVisitedManager.setMasterVisited();
                 toBeAdded.add(new RouteUnit(masterSlaveRule.getMasterDataSourceName(), each.getSqlUnit()));
             } else {
-                toBeAdded.add(new RouteUnit(masterSlaveRule.getLoadBalanceAlgorithm().getDataSource(
-                        masterSlaveRule.getName(), masterSlaveRule.getMasterDataSourceName(), new ArrayList<>(masterSlaveRule.getSlaveDataSourceNames())), each.getSqlUnit()));
+                toBeAdded.add(new RouteUnit(masterSlaveRule.getLoadBalanceAlgorithm().getDataSource(masterSlaveRule.getName(), masterSlaveRule.getMasterDataSourceName(), new ArrayList<>(masterSlaveRule.getSlaveDataSourceNames())), each.getSqlUnit()));
             }
         }
         sqlRouteResult.getRouteUnits().removeAll(toBeRemoved);

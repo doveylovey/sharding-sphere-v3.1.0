@@ -27,7 +27,6 @@ import java.util.Collection;
  * @author zhangliang
  */
 public interface ShardingStrategy {
-
     /**
      * Get sharding columns.
      *

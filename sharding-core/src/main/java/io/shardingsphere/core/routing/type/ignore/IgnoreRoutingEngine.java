@@ -26,7 +26,6 @@ import io.shardingsphere.core.routing.type.RoutingResult;
  * @author zhangliang
  */
 public final class IgnoreRoutingEngine implements RoutingEngine {
-
     @Override
     public RoutingResult route() {
         return new RoutingResult();

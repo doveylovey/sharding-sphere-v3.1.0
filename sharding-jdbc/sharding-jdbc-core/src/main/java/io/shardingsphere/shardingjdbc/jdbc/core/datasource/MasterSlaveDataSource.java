@@ -44,15 +44,11 @@ import java.util.Properties;
 @Getter
 @Slf4j
 public class MasterSlaveDataSource extends AbstractDataSourceAdapter {
-
     private final DatabaseMetaData databaseMetaData;
-
     private final MasterSlaveRule masterSlaveRule;
-
     private final ShardingProperties shardingProperties;
 
-    public MasterSlaveDataSource(final Map<String, DataSource> dataSourceMap, final MasterSlaveRuleConfiguration masterSlaveRuleConfig,
-                                 final Map<String, Object> configMap, final Properties props) throws SQLException {
+    public MasterSlaveDataSource(final Map<String, DataSource> dataSourceMap, final MasterSlaveRuleConfiguration masterSlaveRuleConfig, final Map<String, Object> configMap, final Properties props) throws SQLException {
         super(dataSourceMap);
         databaseMetaData = getDatabaseMetaData(dataSourceMap);
         if (!configMap.isEmpty()) {

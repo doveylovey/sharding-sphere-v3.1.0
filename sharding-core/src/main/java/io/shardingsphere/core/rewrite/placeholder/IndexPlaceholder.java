@@ -28,9 +28,7 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 @Getter
 public final class IndexPlaceholder implements ShardingPlaceholder {
-
     private final String logicIndexName;
-
     private final String logicTableName;
 
     @Override

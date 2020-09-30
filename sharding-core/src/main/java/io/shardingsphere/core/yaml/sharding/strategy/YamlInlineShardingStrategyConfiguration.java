@@ -28,8 +28,6 @@ import lombok.Setter;
 @Getter
 @Setter
 public final class YamlInlineShardingStrategyConfiguration implements YamlShardingStrategyConfiguration {
-
     private String shardingColumn;
-
     private String algorithmExpression;
 }

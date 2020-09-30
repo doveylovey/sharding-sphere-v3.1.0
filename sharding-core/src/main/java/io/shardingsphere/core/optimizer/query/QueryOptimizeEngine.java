@@ -40,15 +40,13 @@ import java.util.Map;
 import java.util.Map.Entry;
 
 /**
- * Query optimize engine.
+ * Query optimize engine. 查询优化引擎
  *
  * @author zhangliang
  */
 @RequiredArgsConstructor
 public final class QueryOptimizeEngine implements OptimizeEngine {
-
     private final OrCondition orCondition;
-
     private final List<Object> parameters;
 
     @Override

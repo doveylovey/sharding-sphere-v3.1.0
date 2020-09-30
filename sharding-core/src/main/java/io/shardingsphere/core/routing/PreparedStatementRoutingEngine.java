@@ -34,13 +34,9 @@ import java.util.List;
  * @author panjuan
  */
 public final class PreparedStatementRoutingEngine {
-
     private final String logicSQL;
-
     private final ShardingRouter shardingRouter;
-
     private final ShardingMasterSlaveRouter masterSlaveRouter;
-
     private SQLStatement sqlStatement;
 
     public PreparedStatementRoutingEngine(final String logicSQL, final ShardingRule shardingRule, final ShardingMetaData shardingMetaData, final DatabaseType databaseType, final boolean showSQL) {

@@ -31,7 +31,6 @@ import lombok.RequiredArgsConstructor;
  */
 @RequiredArgsConstructor
 public final class DatabaseBroadcastRoutingEngine implements RoutingEngine {
-
     private final ShardingRule shardingRule;
 
     @Override

@@ -35,13 +35,9 @@ import java.util.List;
  * @author chenqingyang
  */
 public final class MasterSlaveSQLRewriteEngine {
-
     private final MasterSlaveRule masterSlaveRule;
-
     private final String originalSQL;
-
     private final List<SQLToken> sqlTokens;
-
     private final ShardingMetaData metaData;
 
     /**
