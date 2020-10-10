@@ -29,12 +29,12 @@ dataSources:
     url: jdbc:mysql://localhost:3339/demo_sharding_master_1_slave_1?serverTimezone=Asia/Shanghai&characterEncoding=utf8&useUnicode=true&useSSL=false
     username: root
     password: root
-    
+
 shardingRule:
   tables:
-    t_order: 
+    t_order:
       actualDataNodes: ds_${0..1}.t_order_${0..1}
-      tableStrategy: 
+      tableStrategy:
         inline:
           shardingColumn: order_id
           algorithmExpression: t_order_${order_id % 2}
@@ -44,7 +44,7 @@ shardingRule:
       tableStrategy:
         inline:
           shardingColumn: order_id
-          algorithmExpression: t_order_item_${order_id % 2}  
+          algorithmExpression: t_order_item_${order_id % 2}
   bindingTables:
     - t_order,t_order_item
 
@@ -63,6 +63,6 @@ shardingRule:
       masterDataSourceName: ds_master_1
       slaveDataSourceNames: [ds_master_1_slave_0, ds_master_1_slave_1]
       loadBalanceAlgorithmType: ROUND_ROBIN
-  
+
 props:
   sql.show: true

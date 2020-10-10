@@ -34,7 +34,7 @@ import java.util.List;
 import java.util.TreeSet;
 
 /**
- * Standard sharding strategy.
+ * Inline sharding strategy.
  *
  * @author zhangliang
  */

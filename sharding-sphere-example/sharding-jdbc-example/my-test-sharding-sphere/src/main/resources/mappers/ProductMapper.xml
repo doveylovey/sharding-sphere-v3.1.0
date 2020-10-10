@@ -1,0 +1,230 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.study.mapper.ProductMapper">
+    <resultMap id="BaseResultMap" type="com.study.entity.Product">
+        <!--@mbg.generated-->
+        <!--@Table t_product-->
+        <id column="product_id" jdbcType="BIGINT" property="productId"/>
+        <result column="code" jdbcType="VARCHAR" property="code"/>
+        <result column="name" jdbcType="VARCHAR" property="name"/>
+        <result column="desc" jdbcType="VARCHAR" property="desc"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        <!--@mbg.generated-->
+        product_id, code, `name`, `desc`
+    </sql>
+
+    <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+        <!--@mbg.generated-->
+        select
+        <include refid="Base_Column_List"/>
+        from t_product
+        where product_id = #{productId,jdbcType=BIGINT}
+    </select>
+
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+        <!--@mbg.generated-->
+        delete from t_product
+        where product_id = #{productId,jdbcType=BIGINT}
+    </delete>
+
+    <insert id="insert" parameterType="com.study.entity.Product">
+        <!--@mbg.generated-->
+        insert into t_product (product_id, code, `name`,
+        `desc`)
+        values (#{productId,jdbcType=BIGINT}, #{code,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR},
+        #{desc,jdbcType=VARCHAR})
+    </insert>
+
+    <insert id="insertSelective" parameterType="com.study.entity.Product">
+        <!--@mbg.generated-->
+        insert into t_product
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="productId != null">
+                product_id,
+            </if>
+            <if test="code != null">
+                code,
+            </if>
+            <if test="name != null">
+                `name`,
+            </if>
+            <if test="desc != null">
+                `desc`,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="productId != null">
+                #{productId,jdbcType=BIGINT},
+            </if>
+            <if test="code != null">
+                #{code,jdbcType=VARCHAR},
+            </if>
+            <if test="name != null">
+                #{name,jdbcType=VARCHAR},
+            </if>
+            <if test="desc != null">
+                #{desc,jdbcType=VARCHAR},
+            </if>
+        </trim>
+    </insert>
+
+    <update id="updateByPrimaryKeySelective" parameterType="com.study.entity.Product">
+        <!--@mbg.generated-->
+        update t_product
+        <set>
+            <if test="code != null">
+                code = #{code,jdbcType=VARCHAR},
+            </if>
+            <if test="name != null">
+                `name` = #{name,jdbcType=VARCHAR},
+            </if>
+            <if test="desc != null">
+                `desc` = #{desc,jdbcType=VARCHAR},
+            </if>
+        </set>
+        where product_id = #{productId,jdbcType=BIGINT}
+    </update>
+
+    <update id="updateByPrimaryKey" parameterType="com.study.entity.Product">
+        <!--@mbg.generated-->
+        update t_product
+        set code = #{code,jdbcType=VARCHAR},
+        `name` = #{name,jdbcType=VARCHAR},
+        `desc` = #{desc,jdbcType=VARCHAR}
+        where product_id = #{productId,jdbcType=BIGINT}
+    </update>
+
+    <update id="updateBatch" parameterType="java.util.List">
+        <!--@mbg.generated-->
+        update t_product
+        <trim prefix="set" suffixOverrides=",">
+            <trim prefix="code = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    when product_id = #{item.productId,jdbcType=BIGINT} then #{item.code,jdbcType=VARCHAR}
+                </foreach>
+            </trim>
+            <trim prefix="`name` = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    when product_id = #{item.productId,jdbcType=BIGINT} then #{item.name,jdbcType=VARCHAR}
+                </foreach>
+            </trim>
+            <trim prefix="`desc` = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    when product_id = #{item.productId,jdbcType=BIGINT} then #{item.desc,jdbcType=VARCHAR}
+                </foreach>
+            </trim>
+        </trim>
+        where product_id in
+        <foreach close=")" collection="list" item="item" open="(" separator=", ">
+            #{item.productId,jdbcType=BIGINT}
+        </foreach>
+    </update>
+
+    <update id="updateBatchSelective" parameterType="java.util.List">
+        <!--@mbg.generated-->
+        update t_product
+        <trim prefix="set" suffixOverrides=",">
+            <trim prefix="code = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    <if test="item.code != null">
+                        when product_id = #{item.productId,jdbcType=BIGINT} then #{item.code,jdbcType=VARCHAR}
+                    </if>
+                </foreach>
+            </trim>
+            <trim prefix="`name` = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    <if test="item.name != null">
+                        when product_id = #{item.productId,jdbcType=BIGINT} then #{item.name,jdbcType=VARCHAR}
+                    </if>
+                </foreach>
+            </trim>
+            <trim prefix="`desc` = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    <if test="item.desc != null">
+                        when product_id = #{item.productId,jdbcType=BIGINT} then #{item.desc,jdbcType=VARCHAR}
+                    </if>
+                </foreach>
+            </trim>
+        </trim>
+        where product_id in
+        <foreach close=")" collection="list" item="item" open="(" separator=", ">
+            #{item.productId,jdbcType=BIGINT}
+        </foreach>
+    </update>
+
+    <insert id="batchInsert" parameterType="map">
+        <!--@mbg.generated-->
+        insert into t_product
+        (product_id, code, `name`, `desc`)
+        values
+        <foreach collection="list" item="item" separator=",">
+            (#{item.productId,jdbcType=BIGINT}, #{item.code,jdbcType=VARCHAR}, #{item.name,jdbcType=VARCHAR},
+            #{item.desc,jdbcType=VARCHAR})
+        </foreach>
+    </insert>
+
+    <insert id="insertOrUpdate" parameterType="com.study.entity.Product">
+        <!--@mbg.generated-->
+        insert into t_product
+        (product_id, code, `name`, `desc`)
+        values
+        (#{productId,jdbcType=BIGINT}, #{code,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR},
+        #{desc,jdbcType=VARCHAR})
+        on duplicate key update
+        product_id = #{productId,jdbcType=BIGINT},
+        code = #{code,jdbcType=VARCHAR},
+        `name` = #{name,jdbcType=VARCHAR},
+        `desc` = #{desc,jdbcType=VARCHAR}
+    </insert>
+
+    <insert id="insertOrUpdateSelective" parameterType="com.study.entity.Product">
+        <!--@mbg.generated-->
+        insert into t_product
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="productId != null">
+                product_id,
+            </if>
+            <if test="code != null">
+                code,
+            </if>
+            <if test="name != null">
+                `name`,
+            </if>
+            <if test="desc != null">
+                `desc`,
+            </if>
+        </trim>
+        values
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="productId != null">
+                #{productId,jdbcType=BIGINT},
+            </if>
+            <if test="code != null">
+                #{code,jdbcType=VARCHAR},
+            </if>
+            <if test="name != null">
+                #{name,jdbcType=VARCHAR},
+            </if>
+            <if test="desc != null">
+                #{desc,jdbcType=VARCHAR},
+            </if>
+        </trim>
+        on duplicate key update
+        <trim suffixOverrides=",">
+            <if test="productId != null">
+                product_id = #{productId,jdbcType=BIGINT},
+            </if>
+            <if test="code != null">
+                code = #{code,jdbcType=VARCHAR},
+            </if>
+            <if test="name != null">
+                `name` = #{name,jdbcType=VARCHAR},
+            </if>
+            <if test="desc != null">
+                `desc` = #{desc,jdbcType=VARCHAR},
+            </if>
+        </trim>
+    </insert>
+</mapper>

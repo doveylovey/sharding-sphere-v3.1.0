@@ -12,7 +12,7 @@ dataSources:
 
 shardingRule:
   tables:
-    t_order: 
+    t_order:
       actualDataNodes: ds_${0..1}.t_order
       keyGeneratorColumnName: order_id
     t_order_item:
@@ -20,7 +20,7 @@ shardingRule:
       keyGeneratorColumnName: order_item_id
   bindingTables:
     - t_order,t_order_item
-  
+
   defaultDatabaseStrategy:
     inline:
       shardingColumn: user_id
@@ -28,6 +28,6 @@ shardingRule:
   defaultTableStrategy:
     none:
   defaultKeyGeneratorClassName: io.shardingsphere.core.keygen.DefaultKeyGenerator
-  
+
 props:
   sql.show: true

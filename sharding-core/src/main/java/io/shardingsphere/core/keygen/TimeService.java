@@ -23,7 +23,6 @@ package io.shardingsphere.core.keygen;
  * @author zhangliang
  */
 public class TimeService {
-
     /**
      * Get current millis.
      *

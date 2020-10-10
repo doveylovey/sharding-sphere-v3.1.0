@@ -23,9 +23,7 @@ import io.shardingsphere.core.routing.strategy.ShardingAlgorithm;
 import java.util.Collection;
 
 /**
- * 复合键分片算法接口
- * <p>
- * Complex keys sharding algorithm.
+ * Complex keys sharding algorithm. 复合键分片算法接口
  *
  * @author zhangliang
  */

@@ -34,7 +34,12 @@ import java.util.List;
 import java.util.TreeSet;
 
 /**
- * Standard sharding strategy.
+ * Standard sharding strategy. 标准分片策略：
+ * 1、提供对 SQL 语句中的 =、IN、BETWEEN AND 的分片操作支持
+ * 2、StandardShardingStrategy 只支持单分片键，提供 PreciseShardingAlgorithm(精准分片)和 RangeShardingAlgorithm(范围分片)两个算法
+ * 3、PreciseShardingAlgorithm 是必选的，用于处理对 =、IN 的分片
+ * 4、RangeShardingAlgorithm 是可选的，用于处理对 BETWEEN AND 的分片。如果不配置 RangeShardingAlgorithm，SQL 中的 BETWEEN AND 将按照全库路由处理
+ * 5、如果需要使用 RangeShardingAlgorithm，则必须要和 PreciseShardingAlgorithm 一起使用
  *
  * @author zhangliang
  */

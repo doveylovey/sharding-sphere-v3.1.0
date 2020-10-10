@@ -22,20 +22,20 @@ import io.shardingsphere.api.algorithm.sharding.ShardingValue;
 import java.util.Collection;
 
 /**
- * Sharding strategy.
+ * Sharding strategy. 分片策略：ShardingJdbc 中的分片策略与分片算法是成对出现的，每种分片策略都对应 1~2 种分片算法(不分片策略 NoneShardingStrategy 除外)
  *
  * @author zhangliang
  */
 public interface ShardingStrategy {
     /**
-     * Get sharding columns.
+     * Get sharding columns. 获取分片列
      *
      * @return sharding columns
      */
     Collection<String> getShardingColumns();
 
     /**
-     * Sharding.
+     * Sharding. 分片
      *
      * @param availableTargetNames available data sources or tables's names
      * @param shardingValues       sharding values

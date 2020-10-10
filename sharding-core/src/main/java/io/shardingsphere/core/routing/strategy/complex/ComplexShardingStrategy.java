@@ -29,7 +29,7 @@ import java.util.Collection;
 import java.util.TreeSet;
 
 /**
- * Complex sharding strategy.
+ * Complex sharding strategy. 复合分片策略
  *
  * @author zhangliang
  */

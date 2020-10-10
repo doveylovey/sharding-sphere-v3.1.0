@@ -12,9 +12,9 @@ dataSources:
 
 shardingRule:
   tables:
-    t_order: 
+    t_order:
       actualDataNodes: ds_${0..1}.t_order_${0..1}
-      tableStrategy: 
+      tableStrategy:
         inline:
           shardingColumn: order_id
           algorithmExpression: t_order_${order_id % 2}
@@ -24,10 +24,10 @@ shardingRule:
       tableStrategy:
         inline:
           shardingColumn: order_id
-          algorithmExpression: t_order_item_${order_id % 2}  
+          algorithmExpression: t_order_item_${order_id % 2}
   bindingTables:
     - t_order,t_order_item
-  
+
   defaultDatabaseStrategy:
     inline:
       shardingColumn: user_id
@@ -35,6 +35,6 @@ shardingRule:
   defaultTableStrategy:
     none:
   defaultKeyGeneratorClassName: io.shardingsphere.core.keygen.DefaultKeyGenerator
-  
+
 props:
   sql.show: true

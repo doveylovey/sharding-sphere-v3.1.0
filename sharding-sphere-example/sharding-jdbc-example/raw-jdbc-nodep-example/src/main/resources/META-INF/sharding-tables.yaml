@@ -7,9 +7,9 @@ dataSources:
 
 shardingRule:
   tables:
-    t_order: 
+    t_order:
       actualDataNodes: ds.t_order_${0..1}
-      tableStrategy: 
+      tableStrategy:
         inline:
           shardingColumn: order_id
           algorithmExpression: t_order_${order_id % 2}
@@ -23,6 +23,6 @@ shardingRule:
   bindingTables:
     - t_order,t_order_item
   defaultKeyGeneratorClassName: io.shardingsphere.core.keygen.DefaultKeyGenerator
-  
+
 props:
   sql.show: true

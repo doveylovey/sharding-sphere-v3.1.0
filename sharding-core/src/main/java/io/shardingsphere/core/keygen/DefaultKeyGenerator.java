@@ -24,11 +24,8 @@ import lombok.SneakyThrows;
 import java.util.Calendar;
 
 /**
- * Default distributed primary key generator.
- *
- * <p>
- * Use snowflake algorithm. Length is 64 bit.
- * </p>
+ * Default distributed primary key generator. 默认的分布式主键生成器
+ * Use snowflake algorithm. Length is 64 bit. 使用雪花算法，长度为64位。
  *
  * <pre>
  * 1bit   sign bit.
@@ -48,26 +45,16 @@ import java.util.Calendar;
  * @author gaohongtao
  */
 public final class DefaultKeyGenerator implements KeyGenerator {
-
     public static final long EPOCH;
-
     private static final long SEQUENCE_BITS = 12L;
-
     private static final long WORKER_ID_BITS = 10L;
-
     private static final long SEQUENCE_MASK = (1 << SEQUENCE_BITS) - 1;
-
     private static final long WORKER_ID_LEFT_SHIFT_BITS = SEQUENCE_BITS;
-
     private static final long TIMESTAMP_LEFT_SHIFT_BITS = WORKER_ID_LEFT_SHIFT_BITS + WORKER_ID_BITS;
-
     private static final long WORKER_ID_MAX_VALUE = 1L << WORKER_ID_BITS;
-
     @Setter
     private static TimeService timeService = new TimeService();
-
     private static long workerId;
-
     private static int maxTolerateTimeDifferenceMilliseconds = 10;
 
     static {
@@ -81,9 +68,7 @@ public final class DefaultKeyGenerator implements KeyGenerator {
     }
 
     private byte sequenceOffset;
-
     private long sequence;
-
     private long lastMilliseconds;
 
     /**

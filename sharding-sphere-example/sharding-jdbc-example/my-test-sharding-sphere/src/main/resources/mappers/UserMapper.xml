@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.study.mapper.UserMapper">
+    <resultMap id="BaseResultMap" type="com.study.entity.User">
+        <id column="user_id" property="userId" jdbcType="BIGINT"/>
+        <result column="id_number" property="idNumber" jdbcType="VARCHAR"/>
+        <result column="name" property="name" jdbcType="VARCHAR"/>
+        <result column="age" property="age" jdbcType="INTEGER"/>
+        <result column="gender" property="gender" jdbcType="INTEGER"/>
+        <result column="birth_date" property="birthDate" jdbcType="DATE"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+            user_id,
+            id_number,
+            name,
+            age,
+            gender
+    </sql>
+
+    <insert id="insert" parameterType="com.study.entity.User" useGeneratedKeys="true" keyProperty="userId">
+        insert into t_user (user_id, id_number, name, age, gender, birth_date)
+        values (#{userId,jdbcType=BIGINT}, #{idNumber,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR},
+        #{age,jdbcType=INTEGER}, #{gender,jdbcType=INTEGER}, #{birthDate,jdbcType=DATE})
+    </insert>
+
+    <insert id="insertSelective" parameterType="com.study.entity.User" useGeneratedKeys="true" keyProperty="userId">
+        insert into t_user
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="userId != null">
+                user_id,
+            </if>
+            <if test="idNumber != null">
+                id_number,
+            </if>
+            <if test="name != null">
+                name,
+            </if>
+            <if test="age != null">
+                age,
+            </if>
+            <if test="gender != null">
+                gender,
+            </if>
+            <if test="birthDate != null">
+                birth_date,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="userId != null">
+                #{userId,jdbcType=BIGINT},
+            </if>
+            <if test="idNumber != null">
+                #{idNumber,jdbcType=VARCHAR},
+            </if>
+            <if test="name != null">
+                #{name,jdbcType=VARCHAR},
+            </if>
+            <if test="age != null">
+                #{age,jdbcType=INTEGER},
+            </if>
+            <if test="gender != null">
+                #{gender,jdbcType=INTEGER},
+            </if>
+            <if test="birthDate != null">
+                #{birthDate,jdbcType=DATE},
+            </if>
+        </trim>
+    </insert>
+
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+        delete from t_user
+        where user_id = #{userId,jdbcType=BIGINT}
+    </delete>
+
+    <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long">
+        select
+        <include refid="Base_Column_List"/>
+        from t_user
+        where user_id = #{userId,jdbcType=BIGINT}
+        limit 1
+    </select>
+
+    <update id="updateByPrimaryKey" parameterType="com.study.entity.User">
+        update t_user
+        set id_number = #{idNumber,jdbcType=VARCHAR},
+        name = #{name,jdbcType=VARCHAR},
+        age = #{age,jdbcType=INTEGER},
+        gender = #{gender,jdbcType=INTEGER},
+        birth_date = #{birthDate,jdbcType=DATE}
+        where user_id = #{userId,jdbcType=BIGINT}
+    </update>
+
+    <update id="updateByPrimaryKeySelective" parameterType="com.study.entity.User">
+        update t_user
+        <set>
+            <if test="idNumber != null">
+                id_number = #{idNumber,jdbcType=VARCHAR},
+            </if>
+            <if test="name != null">
+                name = #{name,jdbcType=VARCHAR},
+            </if>
+            <if test="age != null">
+                age = #{age,jdbcType=INTEGER},
+            </if>
+            <if test="gender != null">
+                gender = #{gender,jdbcType=INTEGER},
+            </if>
+            <if test="birthDate != null">
+                birth_date = #{birthDate,jdbcType=DATE},
+            </if>
+        </set>
+        where user_id = #{userId,jdbcType=BIGINT}
+    </update>
+</mapper>

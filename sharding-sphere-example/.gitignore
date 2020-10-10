@@ -1,15 +1,33 @@
-#################### 配置 git 不提交的文件夹、文件
-# 不提交指定文件夹下的文件
-logs/
-.idea/
+HELP.md
 target/
-.classpath/
-.project/
-.settings/
+!.mvn/wrapper/maven-wrapper.jar
+!**/src/main/**/target/
+!**/src/test/**/target/
 
-# 不提交指定后缀名的文件
-*.class
+### STS ###
+.apt_generated
+.classpath
+.factorypath
+.project
+.settings
+.springBeans
+.sts4-cache
+
+### IntelliJ IDEA ###
+.idea
+*.iws
 *.iml
-*.log
-*.exe
-*.dll
+*.ipr
+
+### NetBeans ###
+/nbproject/private/
+/nbbuild/
+/dist/
+/nbdist/
+/.nb-gradle/
+build/
+!**/src/main/**/build/
+!**/src/test/**/build/
+
+### VS Code ###
+.vscode/

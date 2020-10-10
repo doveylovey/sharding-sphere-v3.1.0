@@ -29,6 +29,7 @@ ShardingJDBC 分片策略有两种维度：
 ShardingJDBC 提供了 4 种算法接口：PreciseShardingAlgorithm、RangeShardingAlgorithm、HintShardingAlgorithm、ComplexKeysShardingAlgorithm，可以自定义分片算法。下面以 t_order_item 表为例实现自定义分片算法。
 
 ### 参考
+- https://blog.csdn.net/womenyiqilalala/category_9915733.html
 - https://blog.csdn.net/justry_deng/article/details/90815986
 - https://www.cnblogs.com/mr-yang-localhost/p/8313360.html
 - https://blog.csdn.net/womenyiqilalala/category_9915733.html

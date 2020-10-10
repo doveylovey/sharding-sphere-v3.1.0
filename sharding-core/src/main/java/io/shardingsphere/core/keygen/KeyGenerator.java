@@ -23,7 +23,6 @@ package io.shardingsphere.core.keygen;
  * @author zhangliang
  */
 public interface KeyGenerator {
-
     /**
      * Generate key.
      *

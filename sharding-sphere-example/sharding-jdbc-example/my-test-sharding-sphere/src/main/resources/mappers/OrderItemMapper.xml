@@ -1,0 +1,370 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.study.mapper.OrderItemMapper">
+    <resultMap id="BaseResultMap" type="com.study.entity.OrderItem">
+        <!--@mbg.generated-->
+        <!--@Table t_order_item-->
+        <id column="order_item_id" jdbcType="BIGINT" property="orderItemId"/>
+        <result column="order_id" jdbcType="BIGINT" property="orderId"/>
+        <result column="product_id" jdbcType="BIGINT" property="productId"/>
+        <result column="item_price" jdbcType="DECIMAL" property="itemPrice"/>
+        <result column="total_num" jdbcType="INTEGER" property="totalNum"/>
+        <result column="total_price" jdbcType="DECIMAL" property="totalPrice"/>
+        <result column="order_time" jdbcType="TIMESTAMP" property="orderTime"/>
+        <result column="user_id" jdbcType="BIGINT" property="userId"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        <!--@mbg.generated-->
+        order_item_id, order_id, product_id, item_price, total_num, total_price, order_time, user_id
+    </sql>
+
+    <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+        <!--@mbg.generated-->
+        select
+        <include refid="Base_Column_List"/>
+        from t_order_item
+        where order_item_id = #{orderItemId,jdbcType=BIGINT}
+    </select>
+
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+        <!--@mbg.generated-->
+        delete from t_order_item
+        where order_item_id = #{orderItemId,jdbcType=BIGINT}
+    </delete>
+
+    <insert id="insert" parameterType="com.study.entity.OrderItem">
+        <!--@mbg.generated-->
+        insert into t_order_item (order_item_id, order_id, product_id,
+        item_price, total_num, total_price,
+        order_time, user_id)
+        values (#{orderItemId,jdbcType=BIGINT}, #{orderId,jdbcType=BIGINT}, #{productId,jdbcType=BIGINT},
+        #{itemPrice,jdbcType=DECIMAL}, #{totalNum,jdbcType=INTEGER}, #{totalPrice,jdbcType=DECIMAL},
+        #{orderTime,jdbcType=TIMESTAMP}, #{userId,jdbcType=BIGINT})
+    </insert>
+
+    <insert id="insertSelective" parameterType="com.study.entity.OrderItem">
+        <!--@mbg.generated-->
+        insert into t_order_item
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="orderItemId != null">
+                order_item_id,
+            </if>
+            <if test="orderId != null">
+                order_id,
+            </if>
+            <if test="productId != null">
+                product_id,
+            </if>
+            <if test="itemPrice != null">
+                item_price,
+            </if>
+            <if test="totalNum != null">
+                total_num,
+            </if>
+            <if test="totalPrice != null">
+                total_price,
+            </if>
+            <if test="orderTime != null">
+                order_time,
+            </if>
+            <if test="userId != null">
+                user_id,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="orderItemId != null">
+                #{orderItemId,jdbcType=BIGINT},
+            </if>
+            <if test="orderId != null">
+                #{orderId,jdbcType=BIGINT},
+            </if>
+            <if test="productId != null">
+                #{productId,jdbcType=BIGINT},
+            </if>
+            <if test="itemPrice != null">
+                #{itemPrice,jdbcType=DECIMAL},
+            </if>
+            <if test="totalNum != null">
+                #{totalNum,jdbcType=INTEGER},
+            </if>
+            <if test="totalPrice != null">
+                #{totalPrice,jdbcType=DECIMAL},
+            </if>
+            <if test="orderTime != null">
+                #{orderTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="userId != null">
+                #{userId,jdbcType=BIGINT},
+            </if>
+        </trim>
+    </insert>
+
+    <update id="updateByPrimaryKeySelective" parameterType="com.study.entity.OrderItem">
+        <!--@mbg.generated-->
+        update t_order_item
+        <set>
+            <if test="orderId != null">
+                order_id = #{orderId,jdbcType=BIGINT},
+            </if>
+            <if test="productId != null">
+                product_id = #{productId,jdbcType=BIGINT},
+            </if>
+            <if test="itemPrice != null">
+                item_price = #{itemPrice,jdbcType=DECIMAL},
+            </if>
+            <if test="totalNum != null">
+                total_num = #{totalNum,jdbcType=INTEGER},
+            </if>
+            <if test="totalPrice != null">
+                total_price = #{totalPrice,jdbcType=DECIMAL},
+            </if>
+            <if test="orderTime != null">
+                order_time = #{orderTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="userId != null">
+                user_id = #{userId,jdbcType=BIGINT},
+            </if>
+        </set>
+        where order_item_id = #{orderItemId,jdbcType=BIGINT}
+    </update>
+
+    <update id="updateByPrimaryKey" parameterType="com.study.entity.OrderItem">
+        <!--@mbg.generated-->
+        update t_order_item
+        set order_id = #{orderId,jdbcType=BIGINT},
+        product_id = #{productId,jdbcType=BIGINT},
+        item_price = #{itemPrice,jdbcType=DECIMAL},
+        total_num = #{totalNum,jdbcType=INTEGER},
+        total_price = #{totalPrice,jdbcType=DECIMAL},
+        order_time = #{orderTime,jdbcType=TIMESTAMP},
+        user_id = #{userId,jdbcType=BIGINT}
+        where order_item_id = #{orderItemId,jdbcType=BIGINT}
+    </update>
+
+    <update id="updateBatch" parameterType="java.util.List">
+        <!--@mbg.generated-->
+        update t_order_item
+        <trim prefix="set" suffixOverrides=",">
+            <trim prefix="order_id = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    when order_item_id = #{item.orderItemId,jdbcType=BIGINT} then #{item.orderId,jdbcType=BIGINT}
+                </foreach>
+            </trim>
+            <trim prefix="product_id = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    when order_item_id = #{item.orderItemId,jdbcType=BIGINT} then #{item.productId,jdbcType=BIGINT}
+                </foreach>
+            </trim>
+            <trim prefix="item_price = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    when order_item_id = #{item.orderItemId,jdbcType=BIGINT} then #{item.itemPrice,jdbcType=DECIMAL}
+                </foreach>
+            </trim>
+            <trim prefix="total_num = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    when order_item_id = #{item.orderItemId,jdbcType=BIGINT} then #{item.totalNum,jdbcType=INTEGER}
+                </foreach>
+            </trim>
+            <trim prefix="total_price = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    when order_item_id = #{item.orderItemId,jdbcType=BIGINT} then #{item.totalPrice,jdbcType=DECIMAL}
+                </foreach>
+            </trim>
+            <trim prefix="order_time = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    when order_item_id = #{item.orderItemId,jdbcType=BIGINT} then #{item.orderTime,jdbcType=TIMESTAMP}
+                </foreach>
+            </trim>
+            <trim prefix="user_id = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    when order_item_id = #{item.orderItemId,jdbcType=BIGINT} then #{item.userId,jdbcType=BIGINT}
+                </foreach>
+            </trim>
+        </trim>
+        where order_item_id in
+        <foreach close=")" collection="list" item="item" open="(" separator=", ">
+            #{item.orderItemId,jdbcType=BIGINT}
+        </foreach>
+    </update>
+
+    <update id="updateBatchSelective" parameterType="java.util.List">
+        <!--@mbg.generated-->
+        update t_order_item
+        <trim prefix="set" suffixOverrides=",">
+            <trim prefix="order_id = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    <if test="item.orderId != null">
+                        when order_item_id = #{item.orderItemId,jdbcType=BIGINT} then #{item.orderId,jdbcType=BIGINT}
+                    </if>
+                </foreach>
+            </trim>
+            <trim prefix="product_id = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    <if test="item.productId != null">
+                        when order_item_id = #{item.orderItemId,jdbcType=BIGINT} then #{item.productId,jdbcType=BIGINT}
+                    </if>
+                </foreach>
+            </trim>
+            <trim prefix="item_price = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    <if test="item.itemPrice != null">
+                        when order_item_id = #{item.orderItemId,jdbcType=BIGINT} then #{item.itemPrice,jdbcType=DECIMAL}
+                    </if>
+                </foreach>
+            </trim>
+            <trim prefix="total_num = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    <if test="item.totalNum != null">
+                        when order_item_id = #{item.orderItemId,jdbcType=BIGINT} then #{item.totalNum,jdbcType=INTEGER}
+                    </if>
+                </foreach>
+            </trim>
+            <trim prefix="total_price = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    <if test="item.totalPrice != null">
+                        when order_item_id = #{item.orderItemId,jdbcType=BIGINT} then
+                        #{item.totalPrice,jdbcType=DECIMAL}
+                    </if>
+                </foreach>
+            </trim>
+            <trim prefix="order_time = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    <if test="item.orderTime != null">
+                        when order_item_id = #{item.orderItemId,jdbcType=BIGINT} then
+                        #{item.orderTime,jdbcType=TIMESTAMP}
+                    </if>
+                </foreach>
+            </trim>
+            <trim prefix="user_id = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    <if test="item.userId != null">
+                        when order_item_id = #{item.orderItemId,jdbcType=BIGINT} then #{item.userId,jdbcType=BIGINT}
+                    </if>
+                </foreach>
+            </trim>
+        </trim>
+        where order_item_id in
+        <foreach close=")" collection="list" item="item" open="(" separator=", ">
+            #{item.orderItemId,jdbcType=BIGINT}
+        </foreach>
+    </update>
+
+    <insert id="batchInsert" parameterType="map">
+        <!--@mbg.generated-->
+        insert into t_order_item
+        (order_item_id, order_id, product_id, item_price, total_num, total_price, order_time,
+        user_id)
+        values
+        <foreach collection="list" item="item" separator=",">
+            (#{item.orderItemId,jdbcType=BIGINT}, #{item.orderId,jdbcType=BIGINT}, #{item.productId,jdbcType=BIGINT},
+            #{item.itemPrice,jdbcType=DECIMAL}, #{item.totalNum,jdbcType=INTEGER}, #{item.totalPrice,jdbcType=DECIMAL},
+            #{item.orderTime,jdbcType=TIMESTAMP}, #{item.userId,jdbcType=BIGINT})
+        </foreach>
+    </insert>
+
+    <insert id="insertOrUpdate" parameterType="com.study.entity.OrderItem">
+        <!--@mbg.generated-->
+        insert into t_order_item
+        (order_item_id, order_id, product_id, item_price, total_num, total_price, order_time,
+        user_id)
+        values
+        (#{orderItemId,jdbcType=BIGINT}, #{orderId,jdbcType=BIGINT}, #{productId,jdbcType=BIGINT},
+        #{itemPrice,jdbcType=DECIMAL}, #{totalNum,jdbcType=INTEGER}, #{totalPrice,jdbcType=DECIMAL},
+        #{orderTime,jdbcType=TIMESTAMP}, #{userId,jdbcType=BIGINT})
+        on duplicate key update
+        order_item_id = #{orderItemId,jdbcType=BIGINT},
+        order_id = #{orderId,jdbcType=BIGINT},
+        product_id = #{productId,jdbcType=BIGINT},
+        item_price = #{itemPrice,jdbcType=DECIMAL},
+        total_num = #{totalNum,jdbcType=INTEGER},
+        total_price = #{totalPrice,jdbcType=DECIMAL},
+        order_time = #{orderTime,jdbcType=TIMESTAMP},
+        user_id = #{userId,jdbcType=BIGINT}
+    </insert>
+
+    <insert id="insertOrUpdateSelective" parameterType="com.study.entity.OrderItem">
+        <!--@mbg.generated-->
+        insert into t_order_item
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="orderItemId != null">
+                order_item_id,
+            </if>
+            <if test="orderId != null">
+                order_id,
+            </if>
+            <if test="productId != null">
+                product_id,
+            </if>
+            <if test="itemPrice != null">
+                item_price,
+            </if>
+            <if test="totalNum != null">
+                total_num,
+            </if>
+            <if test="totalPrice != null">
+                total_price,
+            </if>
+            <if test="orderTime != null">
+                order_time,
+            </if>
+            <if test="userId != null">
+                user_id,
+            </if>
+        </trim>
+        values
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="orderItemId != null">
+                #{orderItemId,jdbcType=BIGINT},
+            </if>
+            <if test="orderId != null">
+                #{orderId,jdbcType=BIGINT},
+            </if>
+            <if test="productId != null">
+                #{productId,jdbcType=BIGINT},
+            </if>
+            <if test="itemPrice != null">
+                #{itemPrice,jdbcType=DECIMAL},
+            </if>
+            <if test="totalNum != null">
+                #{totalNum,jdbcType=INTEGER},
+            </if>
+            <if test="totalPrice != null">
+                #{totalPrice,jdbcType=DECIMAL},
+            </if>
+            <if test="orderTime != null">
+                #{orderTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="userId != null">
+                #{userId,jdbcType=BIGINT},
+            </if>
+        </trim>
+        on duplicate key update
+        <trim suffixOverrides=",">
+            <if test="orderItemId != null">
+                order_item_id = #{orderItemId,jdbcType=BIGINT},
+            </if>
+            <if test="orderId != null">
+                order_id = #{orderId,jdbcType=BIGINT},
+            </if>
+            <if test="productId != null">
+                product_id = #{productId,jdbcType=BIGINT},
+            </if>
+            <if test="itemPrice != null">
+                item_price = #{itemPrice,jdbcType=DECIMAL},
+            </if>
+            <if test="totalNum != null">
+                total_num = #{totalNum,jdbcType=INTEGER},
+            </if>
+            <if test="totalPrice != null">
+                total_price = #{totalPrice,jdbcType=DECIMAL},
+            </if>
+            <if test="orderTime != null">
+                order_time = #{orderTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="userId != null">
+                user_id = #{userId,jdbcType=BIGINT},
+            </if>
+        </trim>
+    </insert>
+</mapper>
